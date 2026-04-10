@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check } from 'lucide-react';
+import AnimatedButton from './ui/AnimatedButton';
 
 const badges = [
   'Oltre 40 anni di esperienza',
@@ -75,11 +76,10 @@ export default function Hero() {
           Sopralluogo e preventivo sempre gratuiti.
         </motion.p>
 
-        <motion.div variants={child} className="mt-10 flex flex-col sm:flex-row gap-4">
-          <a href="#contatti" onClick={(e) => handleScroll(e, '#contatti')} className="btn-primary">
+        <motion.div variants={child} className="mt-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <AnimatedButton href="#contatti" onClick={(e) => handleScroll(e, '#contatti')}>
             Richiedi Preventivo Gratuito
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          </AnimatedButton>
           <a href="#servizi" onClick={(e) => handleScroll(e, '#servizi')} className="btn-outline">
             Scopri i Servizi
           </a>

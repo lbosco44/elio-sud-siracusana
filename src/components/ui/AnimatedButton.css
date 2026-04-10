@@ -1,0 +1,94 @@
+/* Adapted from Uiverse.io by gharsh11032000 — palette switched to primary orange */
+
+.animated-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid transparent;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 100px;
+  font-weight: 700;
+  color: #E8671A;
+  box-shadow: 0 0 0 2px #E8671A;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  fill: #E8671A;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 18px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #E8671A;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #ffffff;
+  border-radius: 14px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 18px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.96;
+  box-shadow: 0 0 0 4px #E8671A;
+}
+
+.animated-button:hover .circle {
+  width: 360px;
+  height: 360px;
+  opacity: 1;
+}
