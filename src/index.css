@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-ink bg-white;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-lg shadow-primary/20 transition-all duration-300 ease-smooth-out hover:bg-primary-dark hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/70 bg-white/5 px-7 py-4 text-sm font-semibold uppercase tracking-wider text-white backdrop-blur transition-all duration-300 ease-smooth-out hover:bg-white hover:text-ink;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.25em] text-primary;
+  }
+
+  .section {
+    @apply py-20 md:py-28;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #E8671A !important;
+  background: #fff;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px -12px rgba(28, 28, 30, 0.25);
+  transition: all 300ms ease;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #E8671A;
+  color: #fff !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: 900;
+}
+.swiper-pagination-bullet {
+  background: #E8671A !important;
+  opacity: 0.3;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 24px !important;
+  border-radius: 9999px;
+  transition: all 300ms ease;
+}

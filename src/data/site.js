@@ -1,0 +1,22 @@
+export const site = {
+  brand: 'Elio Sud',
+  subtitle: 'Siracusana',
+  slogan: 'Siracusa ci conosce da 40 anni',
+  since: '1984',
+  phone: '0931 411773',
+  phoneLink: 'tel:+390931411773',
+  whatsapp: '328 1523707',
+  whatsappLink: 'https://wa.me/393281523707',
+  email: 'eliosud@virgilio.it',
+  emailLink: 'mailto:eliosud@virgilio.it',
+  address: 'Via Ignazio Marabitti, 3 — 96100 Siracusa (SR)',
+  vat: '00890990898',
+  owner: 'Cicciarella Paola',
+  facebook: 'https://www.facebook.com/ElioSudSR',
+  nav: [
+    { label: 'Servizi', href: '#servizi' },
+    { label: 'Chi Siamo', href: '#chi-siamo' },
+    { label: 'Lavori', href: '#lavori' },
+    { label: 'Contatti', href: '#contatti' },
+  ],
+};
