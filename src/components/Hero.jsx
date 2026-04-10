@@ -29,16 +29,13 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative min-h-[100svh] flex items-center overflow-hidden bg-ink">
-      <video
+      <img
+        src="/images/hero-bg.jpg"
+        alt=""
+        aria-hidden
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/images/hero-bg.png"
-      >
-        <source src="/images/hero-video.mp4" type="video/mp4" />
-      </video>
+      />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/20" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />

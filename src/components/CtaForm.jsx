@@ -32,7 +32,7 @@ export default function CtaForm() {
     <section id="contatti" className="relative isolate overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img
-          src="/images/preventivo-bg.png"
+          src="/images/preventivo-bg.jpg"
           alt=""
           className="h-full w-full object-cover"
         />

@@ -1,3 +1,4 @@
+import ErrorBoundary from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CounterStats from './components/CounterStats';
@@ -14,22 +15,22 @@ import WhatsAppFab from './components/WhatsAppFab';
 
 export default function App() {
   return (
-    <>
+    <ErrorBoundary>
       <Navbar />
       <main>
         <Hero />
-        <CounterStats />
-        <Services />
-        <WhyUs />
-        <HowWeWork />
-        <About />
-        <Gallery />
-        <Testimonials />
-        <Faq />
-        <CtaForm />
+        <ErrorBoundary><CounterStats /></ErrorBoundary>
+        <ErrorBoundary><Services /></ErrorBoundary>
+        <ErrorBoundary><WhyUs /></ErrorBoundary>
+        <ErrorBoundary><HowWeWork /></ErrorBoundary>
+        <ErrorBoundary><About /></ErrorBoundary>
+        <ErrorBoundary><Gallery /></ErrorBoundary>
+        <ErrorBoundary><Testimonials /></ErrorBoundary>
+        <ErrorBoundary><Faq /></ErrorBoundary>
+        <ErrorBoundary><CtaForm /></ErrorBoundary>
       </main>
       <Footer />
       <WhatsAppFab />
-    </>
+    </ErrorBoundary>
   );
 }

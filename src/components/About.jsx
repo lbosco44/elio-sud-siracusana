@@ -77,7 +77,7 @@ export default function About() {
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/images/chi-siamo-team.png"
+                src="/images/chi-siamo-team.jpg"
                 alt="Il team Elio Sud Siracusana"
                 className="h-full w-full object-cover"
               />
@@ -92,7 +92,7 @@ export default function About() {
               className="absolute -bottom-8 -left-6 md:-left-12 w-1/2 md:w-[55%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white"
             >
               <img
-                src="/images/chi-siamo-lavoro.png"
+                src="/images/chi-siamo-lavoro.jpg"
                 alt="Un intervento in corso"
                 className="h-full w-full object-cover"
               />
