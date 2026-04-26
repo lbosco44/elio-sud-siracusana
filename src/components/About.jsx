@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="chi-siamo" className="section bg-white relative overflow-hidden">
+    <section id="chi-siamo" className="section relative overflow-hidden">
       {/* Decorative "40" watermark */}
       <div
         aria-hidden
@@ -27,17 +27,17 @@ export default function About() {
                 40
               </span>
               <div className="pb-6">
-                <div className="text-sm uppercase tracking-[0.25em] text-muted font-semibold">anni di</div>
-                <div className="text-sm uppercase tracking-[0.25em] text-muted font-semibold">esperienza</div>
+                <div className="text-sm uppercase tracking-[0.25em] text-white/60 font-semibold">anni di</div>
+                <div className="text-sm uppercase tracking-[0.25em] text-white/60 font-semibold">esperienza</div>
               </div>
             </div>
 
             <span className="eyebrow mt-4 block">La Nostra Storia</span>
-            <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] text-ink text-balance">
+            <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] text-white text-balance">
               Una storia di fiducia, costruita impianto per impianto
             </h2>
 
-            <div className="mt-8 space-y-5 text-base md:text-lg leading-relaxed text-muted">
+            <div className="mt-8 space-y-5 text-base md:text-lg leading-relaxed text-white/75">
               <p>
                 Elio Sud Siracusana nasce a Siracusa oltre 40 anni fa con una missione semplice:
                 offrire impianti affidabili e un servizio che mette le persone al primo posto.
@@ -89,7 +89,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="absolute -bottom-8 -left-6 md:-left-12 w-1/2 md:w-[55%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white"
+              className="absolute -bottom-8 -left-6 md:-left-12 w-1/2 md:w-[55%] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-[6px] border-siteBg"
             >
               <img
                 src="/images/chi-siamo-lavoro.jpg"

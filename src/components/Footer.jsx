@@ -29,7 +29,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-ink text-white relative overflow-hidden">
+    <footer className="bg-siteBg text-white relative overflow-hidden border-t border-white/5">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-10 -bottom-20 font-display font-extrabold text-primary/5 select-none leading-none text-[26rem]"

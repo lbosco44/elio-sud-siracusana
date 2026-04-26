@@ -36,8 +36,8 @@ export default function CtaForm() {
           alt=""
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-ink/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-ink/40 to-primary/30" />
+        <div className="absolute inset-0 bg-siteBg/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-siteBg/70 via-siteBg/50 to-primary/25" />
       </div>
 
       <div className="container-x section text-white">

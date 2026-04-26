@@ -9,7 +9,7 @@ import SectionTitle from './ui/SectionTitle';
 
 export default function Gallery() {
   return (
-    <section id="lavori" className="section bg-cream overflow-hidden">
+    <section id="lavori" className="section overflow-hidden">
       <div className="container-x">
         <SectionTitle
           eyebrow="Portfolio"

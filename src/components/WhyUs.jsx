@@ -4,7 +4,7 @@ import SectionTitle from './ui/SectionTitle';
 
 export default function WhyUs() {
   return (
-    <section className="section bg-white">
+    <section className="section">
       <div className="container-x">
         <SectionTitle
           eyebrow="I Nostri Punti di Forza"

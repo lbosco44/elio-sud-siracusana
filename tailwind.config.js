@@ -14,6 +14,7 @@ export default {
         ink: '#1C1C1E',
         cream: '#FAF8F4',
         muted: '#6B6B6B',
+        siteBg: '#2A2836',
       },
       fontFamily: {
         display: ['"Playfair Display"', 'Georgia', 'serif'],

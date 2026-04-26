@@ -8,7 +8,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="section bg-cream">
+    <section className="section">
       <div className="container-x">
         <SectionTitle
           eyebrow="Hai Dubbi?"

@@ -5,7 +5,7 @@ import SectionTitle from './ui/SectionTitle';
 
 export default function Services() {
   return (
-    <section id="servizi" className="section bg-cream">
+    <section id="servizi" className="section">
       <div className="container-x">
         <SectionTitle
           eyebrow="Cosa Facciamo"

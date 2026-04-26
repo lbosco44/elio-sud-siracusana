@@ -18,7 +18,7 @@ const initialsOf = (name) =>
 
 export default function Testimonials() {
   return (
-    <section className="section bg-white relative overflow-hidden">
+    <section className="section relative overflow-hidden">
       <div className="container-x">
         <SectionTitle
           eyebrow="Dicono di Noi"

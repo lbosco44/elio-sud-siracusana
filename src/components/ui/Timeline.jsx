@@ -27,18 +27,18 @@ export default function Timeline({ data, title, subtitle }) {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="w-full bg-cream md:px-10" ref={containerRef}>
+    <div className="w-full md:px-10" ref={containerRef}>
       <div className="container-x max-w-7xl mx-auto py-20 md:py-28">
         {title && (
           <span className="eyebrow">Il Processo</span>
         )}
         {title && (
-          <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-ink text-balance max-w-4xl">
+          <h2 className="mt-4 font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white text-balance max-w-4xl">
             {title}
           </h2>
         )}
         {subtitle && (
-          <p className="mt-5 text-lg md:text-xl leading-relaxed text-muted max-w-2xl text-balance">
+          <p className="mt-5 text-lg md:text-xl leading-relaxed text-white/75 max-w-2xl text-balance">
             {subtitle}
           </p>
         )}
@@ -51,8 +51,8 @@ export default function Timeline({ data, title, subtitle }) {
             className="flex justify-start pt-10 md:pt-32 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-32 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-12 absolute left-2 md:left-2 w-12 rounded-full bg-cream flex items-center justify-center shadow-md shadow-primary/10 ring-4 ring-cream">
-                <div className="h-5 w-5 rounded-full bg-primary border-4 border-cream p-2" />
+              <div className="h-12 absolute left-2 md:left-2 w-12 rounded-full bg-siteBg flex items-center justify-center shadow-md shadow-primary/20 ring-4 ring-siteBg">
+                <div className="h-5 w-5 rounded-full bg-primary border-4 border-siteBg p-2" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-display font-bold text-primary">
                 {item.title}

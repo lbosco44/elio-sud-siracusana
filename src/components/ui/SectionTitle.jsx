@@ -1,6 +1,6 @@
 import Reveal from './Reveal';
 
-export default function SectionTitle({ eyebrow, title, subtitle, center = true, light = false }) {
+export default function SectionTitle({ eyebrow, title, subtitle, center = true, light = true }) {
   return (
     <div className={`mb-14 md:mb-20 ${center ? 'text-center mx-auto max-w-3xl' : ''}`}>
       {eyebrow && (

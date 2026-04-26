@@ -44,17 +44,17 @@ export default function CounterStats() {
   }, [inView]);
 
   return (
-    <section ref={ref} className="relative bg-primary overflow-hidden">
-      <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
-      <div className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-black/10 blur-3xl" />
+    <section ref={ref} className="relative overflow-hidden">
+      <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-primary/15 blur-3xl" />
+      <div className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
       <div className="container-x relative py-20 md:py-28">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 text-white">
           {stats.map((s) => (
             <div
               key={s.label}
-              className="text-center md:border-r md:border-white/20 md:last:border-0 md:px-4"
+              className="text-center md:border-r md:border-white/15 md:last:border-0 md:px-4"
             >
-              <div className="font-display font-extrabold text-6xl sm:text-7xl md:text-7xl lg:text-8xl leading-none tracking-tight">
+              <div className="font-display font-extrabold text-6xl sm:text-7xl md:text-7xl lg:text-8xl leading-none tracking-tight text-primary">
                 <Counter
                   end={s.end}
                   separator={s.separator}
@@ -62,7 +62,7 @@ export default function CounterStats() {
                   start={started}
                 />
               </div>
-              <div className="mt-4 text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/90">
+              <div className="mt-4 text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
                 {s.label}
               </div>
             </div>
