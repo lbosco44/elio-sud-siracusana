@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sun, Building2, BatteryCharging, Snowflake, ArrowRight } from 'lucide-react';
 
-const FRAME_COUNT = 240;
+const FRAME_COUNT = 192;
 const BG_HEX = '#2A2836';
-const framePath = (i) => `/frames/panel_${String(i).padStart(4, '0')}.jpg`;
+const framePath = (i) => `/frames/panel_${String(i).padStart(4, '0')}.webp`;
 
 const SERVICES = [
   {
@@ -42,56 +42,51 @@ const SERVICES = [
 ];
 
 const POSITION_CLASS = {
-  'top-left': 'top-24 left-4 sm:top-28 sm:left-8 lg:top-32 lg:left-16',
-  'top-right': 'top-24 right-4 sm:top-28 sm:right-8 lg:top-32 lg:right-16',
-  'bottom-left': 'bottom-28 left-4 sm:bottom-32 sm:left-8 lg:bottom-32 lg:left-16',
-  'bottom-right': 'bottom-28 right-4 sm:bottom-32 sm:right-8 lg:bottom-32 lg:right-16',
+  'top-left': 'top-2 left-2 lg:-top-10 lg:-left-44',
+  'top-right': 'top-2 right-2 lg:-top-10 lg:-right-44',
+  'bottom-left': 'bottom-2 left-2 lg:-bottom-10 lg:-left-44',
+  'bottom-right': 'bottom-2 right-2 lg:-bottom-10 lg:-right-44',
 };
 
 const POSITION_OFFSET = {
-  'top-left': { x: -32, y: -24 },
-  'top-right': { x: 32, y: -24 },
-  'bottom-left': { x: -32, y: 24 },
-  'bottom-right': { x: 32, y: 24 },
+  'top-left': { x: -24, y: -18 },
+  'top-right': { x: 24, y: -18 },
+  'bottom-left': { x: -24, y: 18 },
+  'bottom-right': { x: 24, y: 18 },
 };
 
 function ServiceCard({ service, scrollYProgress }) {
   const { title, desc, icon: Icon, threshold, position } = service;
   const offset = POSITION_OFFSET[position];
 
-  const opacity = useTransform(
-    scrollYProgress,
-    [threshold, threshold + 0.06],
-    [0, 1],
-    { ease: (t) => 1 - Math.pow(1 - t, 3) }
-  );
+  const opacity = useTransform(scrollYProgress, [threshold, threshold + 0.06], [0, 1]);
   const x = useTransform(scrollYProgress, [threshold, threshold + 0.06], [offset.x, 0]);
   const y = useTransform(scrollYProgress, [threshold, threshold + 0.06], [offset.y, 0]);
 
   const titleOpacity = useTransform(scrollYProgress, [threshold + 0.01, threshold + 0.07], [0, 1]);
-  const titleY = useTransform(scrollYProgress, [threshold + 0.01, threshold + 0.07], [12, 0]);
+  const titleY = useTransform(scrollYProgress, [threshold + 0.01, threshold + 0.07], [10, 0]);
 
   const descOpacity = useTransform(scrollYProgress, [threshold + 0.025, threshold + 0.085], [0, 1]);
-  const descY = useTransform(scrollYProgress, [threshold + 0.025, threshold + 0.085], [12, 0]);
+  const descY = useTransform(scrollYProgress, [threshold + 0.025, threshold + 0.085], [10, 0]);
 
   return (
     <motion.div
       style={{ opacity, x, y }}
-      className={`pointer-events-none absolute ${POSITION_CLASS[position]} w-[230px] sm:w-[280px] lg:w-[320px]`}
+      className={`pointer-events-none absolute ${POSITION_CLASS[position]} w-[145px] sm:w-[180px] lg:w-[280px] z-10`}
     >
-      <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 sm:p-6 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]">
-        <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/90 text-white">
-          <Icon className="h-5 w-5" strokeWidth={2} />
+      <div className="rounded-xl lg:rounded-2xl border border-white/15 bg-siteBg/70 backdrop-blur-md p-3 sm:p-4 lg:p-6 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]">
+        <span className="inline-flex h-7 w-7 sm:h-8 sm:w-8 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-primary text-white">
+          <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-5 lg:w-5" strokeWidth={2} />
         </span>
         <motion.h3
           style={{ opacity: titleOpacity, y: titleY }}
-          className="mt-4 font-display text-xl sm:text-2xl font-semibold leading-tight text-white"
+          className="mt-2 sm:mt-3 lg:mt-4 font-display text-sm sm:text-base lg:text-xl font-semibold leading-tight text-white"
         >
           {title}
         </motion.h3>
         <motion.p
           style={{ opacity: descOpacity, y: descY }}
-          className="mt-2 text-sm leading-relaxed text-white/70"
+          className="mt-1 lg:mt-2 text-[11px] sm:text-xs lg:text-sm leading-relaxed text-white/70 hidden sm:block"
         >
           {desc}
         </motion.p>
@@ -102,6 +97,7 @@ function ServiceCard({ service, scrollYProgress }) {
 
 export default function Hero() {
   const sectionRef = useRef(null);
+  const wrapperRef = useRef(null);
   const canvasRef = useRef(null);
   const imagesRef = useRef([]);
   const currentFrameRef = useRef(0);
@@ -158,6 +154,7 @@ export default function Hero() {
     const ctx = canvas.getContext('2d');
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
+    if (w === 0 || h === 0) return;
     ctx.fillStyle = BG_HEX;
     ctx.fillRect(0, 0, w, h);
     const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
@@ -171,11 +168,13 @@ export default function Hero() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const wrapper = wrapperRef.current;
+    if (!canvas || !wrapper) return;
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      const rect = wrapper.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
       canvas.style.width = w + 'px';
       canvas.style.height = h + 'px';
       canvas.width = Math.round(w * dpr);
@@ -185,8 +184,13 @@ export default function Hero() {
       drawFrame(currentFrameRef.current);
     };
     resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(wrapper);
     window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', resize);
+    };
   }, []);
 
   useEffect(() => {
@@ -229,22 +233,9 @@ export default function Hero() {
       style={{ backgroundColor: BG_HEX }}
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 h-full w-full"
-          style={{ backgroundColor: BG_HEX }}
-        />
-
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background: `linear-gradient(180deg, ${BG_HEX}33 0%, transparent 25%, transparent 70%, ${BG_HEX}cc 100%)`,
-          }}
-        />
-
         {!ready && (
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center text-white"
+            className="absolute inset-0 z-30 flex flex-col items-center justify-center"
             style={{ backgroundColor: BG_HEX }}
           >
             <div className="font-display text-2xl tracking-wide text-white/90">
@@ -264,38 +255,47 @@ export default function Hero() {
 
         <motion.div
           style={{ opacity: headlineOpacity, y: headlineY, scale: headlineScale }}
-          className="pointer-events-none absolute inset-x-0 top-[22vh] sm:top-[26vh] flex flex-col items-center px-6 text-center"
+          className="pointer-events-none absolute inset-x-0 top-[8vh] sm:top-[10vh] flex flex-col items-center px-6 text-center z-20"
         >
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80 backdrop-blur">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80 backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             Siracusa, dal 1984
           </span>
-          <h1 className="font-display font-semibold text-balance text-white text-[2.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+          <h1 className="font-display font-semibold text-balance text-white text-[2rem] leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
             40 anni di
             <br />
             <span className="italic text-primary">energia siciliana</span>
           </h1>
-          <p className="mt-6 max-w-md text-sm sm:text-base text-white/65">
-            Scorri per scoprire i nostri quattro mondi.
-          </p>
         </motion.div>
 
-        {SERVICES.map((s) => (
-          <ServiceCard key={s.id} service={s} scrollYProgress={scrollYProgress} />
-        ))}
+        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6">
+          <div
+            ref={wrapperRef}
+            className="relative w-[min(95vw,880px)] aspect-video"
+          >
+            <canvas
+              ref={canvasRef}
+              className="block w-full h-full rounded-xl lg:rounded-2xl"
+              style={{ backgroundColor: BG_HEX }}
+            />
+
+            {SERVICES.map((s) => (
+              <ServiceCard key={s.id} service={s} scrollYProgress={scrollYProgress} />
+            ))}
+          </div>
+        </div>
 
         <motion.div
           style={{ opacity: ctaOpacity, y: ctaY }}
-          className="absolute inset-x-0 bottom-[18vh] flex flex-col items-center px-6 text-center"
+          className="absolute inset-x-0 bottom-[8vh] sm:bottom-[10vh] flex flex-col items-center px-6 text-center z-20"
         >
-          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-semibold text-white text-balance max-w-3xl leading-tight">
-            Richiedi un sopralluogo
-            <br />
+          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-semibold text-white text-balance max-w-3xl leading-tight">
+            Richiedi un sopralluogo{' '}
             <span className="italic text-primary">gratuito</span>
           </h2>
           <a
             href="#contatti"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-[0_20px_60px_-20px_rgba(232,103,26,0.6)] transition-transform duration-300 hover:-translate-y-0.5 hover:bg-primary-dark"
+            className="mt-5 sm:mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 sm:px-8 py-3 sm:py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-[0_20px_60px_-20px_rgba(232,103,26,0.6)] transition-transform duration-300 hover:-translate-y-0.5 hover:bg-primary-dark pointer-events-auto"
           >
             Prenota ora
             <ArrowRight className="h-4 w-4" />
