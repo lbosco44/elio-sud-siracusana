@@ -42,10 +42,10 @@ const SERVICES = [
 ];
 
 const POSITION_CLASS = {
-  'top-left': 'top-2 left-2 lg:-top-10 lg:-left-44',
-  'top-right': 'top-2 right-2 lg:-top-10 lg:-right-44',
-  'bottom-left': 'bottom-2 left-2 lg:-bottom-10 lg:-left-44',
-  'bottom-right': 'bottom-2 right-2 lg:-bottom-10 lg:-right-44',
+  'top-left': 'top-2 left-2 sm:top-3 sm:left-3 lg:top-6 lg:left-6',
+  'top-right': 'top-2 right-2 sm:top-3 sm:right-3 lg:top-6 lg:right-6',
+  'bottom-left': 'bottom-2 left-2 sm:bottom-3 sm:left-3 lg:bottom-6 lg:left-6',
+  'bottom-right': 'bottom-2 right-2 sm:bottom-3 sm:right-3 lg:bottom-6 lg:right-6',
 };
 
 const POSITION_OFFSET = {
@@ -72,7 +72,7 @@ function ServiceCard({ service, scrollYProgress }) {
   return (
     <motion.div
       style={{ opacity, x, y }}
-      className={`pointer-events-none absolute ${POSITION_CLASS[position]} w-[145px] sm:w-[180px] lg:w-[280px] z-10`}
+      className={`pointer-events-none absolute ${POSITION_CLASS[position]} w-[150px] sm:w-[200px] lg:w-[300px] z-10`}
     >
       <div className="rounded-xl lg:rounded-2xl border border-white/15 bg-siteBg/70 backdrop-blur-md p-3 sm:p-4 lg:p-6 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]">
         <span className="inline-flex h-7 w-7 sm:h-8 sm:w-8 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-primary text-white">
@@ -268,15 +268,23 @@ export default function Hero() {
           </h1>
         </motion.div>
 
-        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6">
+        <div className="absolute inset-0 flex items-center justify-center">
           <div
             ref={wrapperRef}
-            className="relative w-[min(95vw,880px)] aspect-video"
+            className="relative w-[min(100vw,1280px,142vh)] aspect-video"
           >
             <canvas
               ref={canvasRef}
-              className="block w-full h-full rounded-xl lg:rounded-2xl"
-              style={{ backgroundColor: BG_HEX }}
+              className="block w-full h-full"
+              style={{
+                backgroundColor: BG_HEX,
+                WebkitMaskImage:
+                  'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+                WebkitMaskComposite: 'source-in',
+                maskImage:
+                  'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+                maskComposite: 'intersect',
+              }}
             />
 
             {SERVICES.map((s) => (
